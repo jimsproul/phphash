@@ -1,22 +1,27 @@
 <?php
-
-
+/*
+****************************************************************
+* This program of Php Procdural code demonstrates 
+* an implementation of a Hash Table
+****************************************************************
+*
+* First allocate a fixed array to use as the hash table
+*
+* Noite: In some use cases after Php Ver. 7 standard arrays perform 
+* just as well See function hashTable() for use of a standard array; 
+*/
 
 $hashTable = new SplFixedArray(255);
-/*
-* In some use cases after Php Ver. 7 standard arrays perform just as well 
-* $hashTable = hashTable(); // build has table with stdanard  arry
-*/
 
 foreach(dummyData() as $line) {
     addEntry($hashTable,$line);
 }
 
-addEntry($hashTable,'9724629700','jim sproul');
+addEntry($hashTable,'9775551212','Bob Collins');
+addEntry($hashTable,'8888','Ediie Eight');
+addEntry($hashTable,'7777','Steve Seven');
 
-// print_r($hashTable);
-
-$key = 'jim sproul';
+$key = 'Bob Collins';
 echo "Test 1, Find a Key in Hash Table. Key: ".$key."\n";
 echo "Find Key: ".$key." Returned: ".findKey($hashTable, $key)."\n\n";
 
@@ -28,7 +33,7 @@ $key = 'Lorem';
 echo "Test 3, Find a String in Hash Table. String: ".$key."\n";
 echo "Find String: ".$key." Returned: ".findString($hashTable, $key)."\n\n";
 
-$key = '9724629700';
+$key = '9775551212';
 echo "Test 4, Find a String in Hash Table. String: ".$key."\n";
 echo "Find String: ".$key." Returned: ".findString($hashTable, $key)."\n\n";
 
@@ -101,7 +106,6 @@ function hashTable() {
 
 function addEntry(&$hT,$strng,$eKey=Null) {
 
- //   $newKey = empty($eKey)?$strng:$eKey;
     $hKey = hashKey(empty($eKey)?$strng:$eKey);
     $data = empty($eKey)?$strng:array($eKey => $strng);
 
