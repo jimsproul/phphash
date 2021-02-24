@@ -1,2 +1,5 @@
 # phphash
-Hashtable implemented in php
+
+This repos contains examples of implementing Hash Tables using Php code.
+
+
