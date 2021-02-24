@@ -1,8 +1,8 @@
 # phphash
 
 This repos contains examples of implementing Hash Tables using Php code.
-* procedural.php uses procedural Php code to implement a Hash Table
-* objectoriented.php is the Object Oriented version
+* **procedural.php** uses procedural Php code to implement a Hash Table
+* **objectoriented.php** is the Object Oriented version
 
 In both cases fixed 255 array is allocated as the Hash Table
 
