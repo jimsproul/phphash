@@ -13,13 +13,28 @@
 
 $hashTable = new SplFixedArray(255);
 
+/*
+* Now fill the has table with String entries where
+* the String itself is hashed as a key
+*/
+
 foreach(dummyData() as $line) {
     addEntry($hashTable,$line);
 }
 
+/*
+* Now we add some key value pairs to the hash table
+*/
+
 addEntry($hashTable,'9775551212','Bob Collins');
 addEntry($hashTable,'8888','Ediie Eight');
 addEntry($hashTable,'7777','Steve Seven');
+
+/*
+* Below are a set of tests
+* 2 Find a value in the table by its Key
+* 2 look for a string in a stored entry value
+*/
 
 $key = 'Bob Collins';
 echo "Test 1, Find a Key in Hash Table. Key: ".$key."\n";
@@ -37,8 +52,14 @@ $key = '9775551212';
 echo "Test 4, Find a String in Hash Table. String: ".$key."\n";
 echo "Find String: ".$key." Returned: ".findString($hashTable, $key)."\n\n";
 
-function findKey(&$hashT, $key) {
+/*
+* ----- functions used to implement the has table below
+*/
 
+function findKey(&$hashT, $key) {
+/*
+*  Return a stored value based on a key search
+*/
     $hashedKey = hashKey($key);
     $entry = $hashT[$hashedKey];
 
@@ -61,6 +82,9 @@ function findKey(&$hashT, $key) {
 }
 
 function findString(&$hashT, $string) {
+/*
+*  Return a stored values which contain search string
+*/
     $found = "";
     foreach ($hashT as $hashedKey => $entry) {
 
@@ -86,13 +110,19 @@ function findString(&$hashT, $string) {
 }
 
 function hashKey($string) {
-
+/*
+* Return a Hash key based on the ASCII value of a chracter
+* in an MD5 has of a key string
+*/    
     return ord(substr(md5($string),5,1));
 
 }
 
 function hashTable() {
-    
+/*
+* You can used this function to build a hash table
+* using a standard array instead of using the SplFixedArray()
+*/    
     $size = 255;
     $arr = array();
 
@@ -105,7 +135,12 @@ function hashTable() {
 }
 
 function addEntry(&$hT,$strng,$eKey=Null) {
-
+/*
+* Add an entry to the hash table. 
+* Key Value pairs are preserved
+* Values without keys are stored using a hash key derieved
+* from the value 
+*/    
     $hKey = hashKey(empty($eKey)?$strng:$eKey);
     $data = empty($eKey)?$strng:array($eKey => $strng);
 
@@ -122,7 +157,10 @@ function addEntry(&$hT,$strng,$eKey=Null) {
 }
 
 function dummyData(){
-
+/*
+* This function returns an array of string based on the 
+* period seporator
+*/
      $loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
      Phasellus quis posuere urna. Integer dapibus augue id lorem vestibulum, 
      in ullamcorper elit vestibulum. Vivamus nisl mauris, dapibus at diam quis, 
