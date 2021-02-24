@@ -10,14 +10,12 @@
 * Noite: In some use cases after Php Ver. 7 standard arrays perform 
 * just as well See function hashTable() for use of a standard array; 
 */
-
 $hashTable = new SplFixedArray(255);
 
 /*
 * Now fill the has table with String entries where
 * the String itself is hashed as a key
 */
-
 foreach(dummyData() as $line) {
     addEntry($hashTable,$line);
 }
@@ -25,7 +23,6 @@ foreach(dummyData() as $line) {
 /*
 * Now we add some key value pairs to the hash table
 */
-
 addEntry($hashTable,'9775551212','Bob Collins');
 addEntry($hashTable,'8888','Ediie Eight');
 addEntry($hashTable,'7777','Steve Seven');
@@ -35,7 +32,6 @@ addEntry($hashTable,'7777','Steve Seven');
 * 2 Find a value in the table by its Key
 * 2 look for a string in a stored entry value
 */
-
 $key = 'Bob Collins';
 echo "Test 1, Find a Key in Hash Table. Key: ".$key."\n";
 echo "Find Key: ".$key." Returned: ".findKey($hashTable, $key)."\n\n";
