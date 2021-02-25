@@ -5,20 +5,18 @@
 * an implementation of a Hash Table
 ****************************************************************
 *
-* First allocate a fixed array to use as the hash table
+* First instantiate  the HashTable object which builds
+* a fixed array to use as the hash table
+
+* In this case the constructor also loads string data into the
+* hash table. The string itself is used for hash key generation. 
 *
 * Noite: In some use cases after Php Ver. 7 standard arrays perform 
 * just as well See function hashTable() for use of a standard array; 
 */
 $ht = new HashTable();
-
 /*
-* Now fill the has table with String entries where
-* the String itself is hashed as a key
-*/
-
-/*
-* Now we add some key value pairs to the hash table
+* Now we add some key value pairs to the hash table with a pulic method
 */
 $ht->addEntry('9775551212','Bob Collins');
 $ht->addEntry('8888','Ed Eight');
@@ -46,13 +44,17 @@ echo "Test 4, Find a String in Hash Table. String: ".$key."\n";
 echo "Find String: ".$key." Returned: ".$ht->findString($key)."\n\n";
 
 /*
-* ----- functions used to implement the has table below
+* ----- functions used to implement the hash table below
+*       are in the class below
 */
 
 class HashTable {
     public $hashTable;
 
     public function __construct(){
+        /*
+        *     Allocate a fixed array and fill it with dummy data   
+        */    
         $this->hashTable = new SplFixedArray(255);
         foreach($this->dummyData() as $line) {
             $this->addEntry($line);
